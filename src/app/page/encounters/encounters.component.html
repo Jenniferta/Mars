@@ -1,3 +1,8 @@
-<p>
-  encounters works!
-</p>
+
+<div class="page">
+  <ul>
+    <li *ngFor="let encounter of encounters">
+      {{encounter.atype}}, {{ encounter.action}}, {{encounter.data}}
+    </li>
+  </ul>
+</div>

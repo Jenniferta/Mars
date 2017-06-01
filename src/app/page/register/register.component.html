@@ -1,3 +1,16 @@
-<p>
-  register works!
-</p>
+
+<div class="page">
+  <form class="report-form">
+    <fieldset>
+      <input type="text" placeholder="Enter your name" />
+      <input type="number" placeholder="Enter your age" />
+      <select job="Your Occuptation">
+        <option *ngFor="let job of jobs">{{job.name}}</option>
+      </select>
+      <label>Action</label>
+      <textarea rows="10"></textarea>
+    </fieldset>
+    <button (click)="postColonist()" type="submit"> Register</button>
+  </form>
+  <h1> Check in </h1>
+</div>

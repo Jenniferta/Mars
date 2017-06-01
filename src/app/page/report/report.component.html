@@ -1,3 +1,8 @@
-<p>
-  report works!
-</p>
+<h1>Report Encounter</h1>
+<p>Safety on Mars is your responsibility</p>
+
+
+  <select name="Select alien type ">
+      <option *ngFor="let alien of this.aliens">{{alien.type}}</option>
+  </select>
+   <button (click)="postReport()" type="Submit"> Report </button>
