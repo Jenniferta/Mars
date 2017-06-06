@@ -1,0 +1,68 @@
+body{
+  background:black;
+  height:100%;
+  width:100%;
+  color:white;
+}
+
+.page{
+  color:white;
+}
+
+header{
+  padding:50px;
+  h1{
+    font-size:50px;
+    text-align:center;
+    color:orangered;
+  }
+  p{
+    font-size:30px;
+    text-align:center;
+    }
+}
+
+.description-container{
+  padding:20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.alien-select{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
+select{
+  border-radius:0;
+  width: 50%;
+  font-size: 20px;
+  color: grey;
+}
+
+textarea{
+  display: flex;
+  min-width: 500px;
+  min-height: 200px;
+  overflow-y: scroll;
+  color: grey;
+  font-size:20px;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+  width: 150px;
+  height:50px;
+  font-size: 30px;
+  color:orangered;
+  background-color:transparent;
+}
