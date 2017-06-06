@@ -1,0 +1,96 @@
+
+.page{
+  align-items:center;
+  background:url("/../../../assets/images/background-mars.jpg");
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+}
+
+.title{
+  margin-top: 150px;
+  font-size: 50px;
+  color: orangered;
+  text-shadow: 2px 1px red;
+  text-decoration: bold;
+  text-align: center;
+}
+
+.register-form{
+  width:100%;
+  height:100%;
+
+}
+.form container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding-top: 30px;
+  color: black;
+}
+
+.form{
+  display:flex;
+  align-items:center;
+  color: black;
+}
+
+input{
+  width: 400px;
+  height: 30px;
+  background:none;
+  color: black;
+  margin:0 auto;
+  text-align: center;
+}
+
+div{
+  padding: 20px;
+}
+
+
+select{
+  background:none;
+  border-radius:none;
+  box-sizing:none;
+  font-size:30px;
+  margin:0rem;
+}
+
+select, input {
+  border-left:none;
+  border-top:none;
+  border-right:none;
+  border-bottom: 2px dotted grey;
+  background-color:none;
+  font-size:30px;
+  margin:0rem;
+  border-radius:none;
+  color: black;
+
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  width: 100px;
+  height:50px;
+  border-radius:0px;
+  color:black;
+  font-size: 20px;
+  display: flex;
+  justify-content:center;
+  align-self:center;
+}
+
+input::placeholder{
+  color:black;
+  display: flex;
+  justify-content: center;
+}

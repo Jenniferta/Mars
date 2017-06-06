@@ -3,6 +3,7 @@ import { Alien } from '../../models/alien';
 import { AlienService } from '../../services/alien.service';
 import { Report } from '../../models/report';
 import { ReportService } from '../../services/report.service';
+import { Router } from '@angular/router';
 
 import {
   FormGroup,
@@ -25,15 +26,15 @@ export class ReportComponent implements OnInit {
 aliens: Alien[] = [];
 report: Report;
 reportForm: FormGroup;
+currentdate: Date;
 
-  constructor(private alienService: AlienService, private reportService: ReportService) {
-
+  constructor(private alienService: AlienService, private reportService: ReportService, private router: Router) {
   }
 
   ngOnInit() {
      this.reportForm = new FormGroup({
-      atype: new FormControl('', []),
-      action: new FormControl('', [])
+      alien_id: new FormControl('', []),
+      description: new FormControl('', [])
     });
 
     this.alienService.getData()
@@ -41,16 +42,28 @@ reportForm: FormGroup;
       this.aliens = data.aliens;
       console.log(data);
     });
-  }
+      this.currentdate = new Date();
+      console.log(this.currentdate);
+      this.currentdate.getMonth();
+    }
 
-   postReport() {
-     const report = new Report('1', 'coffee', 'noddle', '7');
-     this.reportService.postData(report)
-                        .subscribe((Report) => {
-                          console.log(new Report);
+  reported(e) {
+    e.preventDefault();
+    if (this.reportForm.invalid) {
+      // the form is invalid
+    } else {
+      const colonist_id = localStorage.colonist_id;
+      const submitdate = `${this.currentdate.getFullYear()}-${this.currentdate.getMonth()+ 1}-${this.currentdate.getDate()}`;
+      const atype = this.reportForm.get('alien_id').value;
+      const action = this.reportForm.get('description').value;
+
+      const report = new Report(atype, submitdate, action, colonist_id);
+      this.reportService.postData(report)
+                        .subscribe((newReport) => {
+                        this.router.navigate(['encounters']);
                         });
-   }
-emptyobject
+    }
+  }
 }
 
 

@@ -11,7 +11,7 @@ import { EncountersService } from '../../services/encounters.service';
 export class EncountersComponent implements OnInit {
 
 
-encounters: Encounter[] = [];
+  encounters: Encounter[] = [];
 
   constructor(private encounterService: EncountersService) {
 

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ColonistService } from '../../services/colonist.service';
 import { Colonist} from '../../models/colonist';
 import { Job } from '../../models/job';
-
+import { JobsService } from '../../services/job.service';
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -32,7 +33,8 @@ const age = (tooYoung: number, tooOld: number): ValidatorFn => {
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [ColonistService]
+  providers: [ColonistService, JobsService]
+
 })
 export class RegisterComponent implements OnInit {
 
@@ -41,16 +43,10 @@ export class RegisterComponent implements OnInit {
   jobs: Job[];
   NO_JOB_SELECTED = 'no job';
 
-  constructor(private colonistService: ColonistService) {
-    this.jobs = [
-      { id: '1', name: 'Front-End Developer', description: '$$$' },
-      { id: '2', name: 'Back-End Developer', description: '$$' },
-      { id: '3', name: 'Both-End Developer', description: '$' }
-    ];
-  }
+  constructor(private colonistService: ColonistService, private jobsService: JobsService, private router: Router) {}
 
   ngOnInit() {
-
+    this.jobsService.getData().subscribe(data => this.jobs = data.jobs);
     this.registerForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
@@ -67,14 +63,16 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       // the form is invalid
     } else {
+
       const name = this.registerForm.get('name').value;
       const age = this.registerForm.get('age').value;
       const job_id = this.registerForm.get('job_id').value;
 
       const colonist = new Colonist(name, age, job_id);
-      console.log('WIN!', colonist);
-
-
+        this.colonistService.postData(colonist).subscribe(data => {
+              localStorage.setItem('colonist_id', data.colonist.id);
+              this.router.navigate(['encounters']);
+         });
     }
   }
 }

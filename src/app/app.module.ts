@@ -11,7 +11,7 @@ import { EncountersComponent } from './page/encounters/encounters.component';
 import { ReportComponent } from './page/report/report.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'encounters', component: EncountersComponent },
   { path: 'report', component: ReportComponent},
